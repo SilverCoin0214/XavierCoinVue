@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id='app'>
+    {{message}}
+    <h2>{{fullName}}</h2>
+    <h2>{{fullName}}</h2>
+    <h2>{{fullName}}</h2>
+    <h2>{{fullName}}</h2>
+
+
+    <h3>{{getFullName()}}</h3>
+    <h3>{{getFullName()}}</h3>
+    <h3>{{getFullName()}}</h3>
+  </div>
+  <script src='../vue.js'></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '数据和视图分离',
+        firstName: 'silver',
+        lastName: 'coin'
+      },
+      computed: {
+        // 计算属性只会执行一次, 再调用使用的是缓存
+        fullName() {
+          console.log('fullName')
+          return this.firstName + ' ' + this.lastName
+        }
+      },
+      methods: {
+        // 方法调用每使用一次都会调用一次
+        getFullName() {
+          console.log('getFullName')
+          return this.firstName + ' ' + this.lastName
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

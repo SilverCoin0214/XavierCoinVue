@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id='app'>
+    {{message}}
+    <h2>{{fullName}}</h2>
+  </div>
+  <script src='../vue.js'></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '数据和视图分离',
+        firstName: 'xavier',
+        lastName: 'coin'
+      },
+      computed: {
+        // fullName 本质是个对象, 拥有getter 和 setter, 但是由于是默认只读, 所以set省略,
+        // 实际就是调用 getter方法.
+        fullName: {
+          set: function (newValue) {
+            let names = newValue.split(' ')
+            this.firstName = names[0]
+            this.firstName = names[1]
+          },
+
+          get: function () {
+            return this.firstName + ' ' + this.lastName
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

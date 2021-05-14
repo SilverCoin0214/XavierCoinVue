@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id='app'>
+    <h2 v-if='isShow'>{{message}}</h2>
+    <h2 v-else>如果没显示内容, 就切换到else</h2>
+    <button @click='changeShow'>切换</button>
+  </div>
+  <script src='../vue.js'></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '数据和视图分离',
+        isShow: true
+      },
+      methods: {
+        changeShow() {
+          this.isShow = !this.isShow
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

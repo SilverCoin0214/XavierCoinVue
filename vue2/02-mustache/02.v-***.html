@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    [cloak] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id='app' v-cloak>
+    <h2 v-once>{{message}}</h2>
+    <h2>{{message}}</h2>
+
+    <h2 v-html='url'></h2>
+
+    <h2 v-text='content'>被覆盖</h2>
+
+    <h2 v-pre>{{message}} v-pre: 显示原生的内容</h2>
+
+    <h2>v-cloak是用来当vue没解析到时, 先用v-cloak属性把节点隐藏不要显示模板</h2>
+
+  </div>
+  <script src='../vue.js'></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'v-once是指只渲染一次',
+        url: "<a href='https://www.google.com'>v-html用来解析html</a>",
+        content: 'v-text就是插入文本, 但是不好用',
+      }
+    })
+  </script>
+</body>
+
+</html>

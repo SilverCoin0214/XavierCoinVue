@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+
+
+<body>
+  <div id='app'>
+    {{message}}
+
+    <ul>
+      <li v-for="(item, index) in movie" :class="changeColor(index)" v-on:click='isChoosed(index)'>{{index}}-{{item}}
+      </li>
+    </ul>
+  </div>
+  <script src='../vue.js'></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '将v-for 和 v-bind结合, 点击列表变色',
+        movie: ['海贼王', '火影忍者', '死神', '猎人'],
+        currentIndex: 0,
+      },
+      methods: {
+        isChoosed(index) {
+          this.currentIndex = index
+        },
+        changeColor(index) {
+          if (index == this.currentIndex) {
+            return { active: true }
+          }
+        },
+      }
+    })
+  </script>
+</body>
+
+</html>
