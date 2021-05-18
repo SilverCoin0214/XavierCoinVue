@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <template id='temp'>
+        <div>
+            <div>hello world</div>
+            <div>{{counter}}</div>
+            <button @click='increment'>+1</button>
+            <button @click='decrement'>-1</button>
+        </div>
+    </template>
+
+  <script src="../01/js/vue3.js"></script>
+
+  <script>
+    const app = Vue.createApp({
+      template: '#temp',
+
+      // vue3中data必须传入一个函数, 否则会在浏览器内报错
+      // data返回的对象会被Vue的响应式系统劫持, 之后该对象的修改和访问都会被劫持中处理
+      data: function () {
+        return {
+          counter: 100
+        }
+      },
+      methods: {
+        increment() {
+          this.counter++
+        },
+        decrement() {
+          this.counter--
+        }
+      }
+    }).mount('#app')
+
+  </script>
+
+</body>
+
+</html>
