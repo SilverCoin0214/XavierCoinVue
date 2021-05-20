@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <!-- vue2 template只能有一个根元素 -->
+    <!-- vue3 中允许有多个根元素 -->
+    <template id="my-app">
+        <h2>{{message}}</h2>
+        <img src="" alt="">
+        <a :href="link">百度一下</a>
+
+        <div :class="{active: isActive}">颜色测试</div>
+        <button @click='toggle'>切换</button>
+
+        <!-- 将对象放到一个单独的属性中 -->
+        <div :class="classObj">测试</div>
+
+    </template>
+
+    <script src="../js/vue3.js"></script>
+    <script>
+        const App = {
+            template: '#my-app',
+            data() {
+                return {
+                    message: 'hello world',
+                    imgUrl: '',
+                    link: 'https://www.baidu.com',
+                    isActive: true,
+                    classObj: {
+                        active: true,
+                        title: true
+                    }
+                }
+            },
+            methods: {
+                toggle() {
+                    this.isActive = !this.isActive
+                }
+            }
+        }
+
+        Vue.createApp(App).mount('#app')
+    </script>
+</body>
+</html>
